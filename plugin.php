@@ -51,20 +51,18 @@ iterations -By default annotations are drawn in two iterations, e.g. when underl
 brackets - Value could be a string or an array of strings, each string being one of these values: left, right, top, bottom. When drawing a bracket, this configures which side(s) of the element to bracket. Default value is right.
 
 */
-	return <<<EOD
+	$attributes = [];
+	$attributes[] = $atts['type'] ? 'data-type="'.$atts['type'].'"' : '';
+	$attributes[] = $atts['animate'] ? 'data-animate="'.$atts['animate'].'"' : '';
+	$attributes[] = $atts['animationduration'] ? 'data-animation-duration="'.$atts['animationduration'].'"' : '';
+	$attributes[] = $atts['color'] ? 'data-color="'.$atts['color'].'"' : '';
+	$attributes[] = $atts['padding'] ? 'data-padding="'.$atts['padding'].'"' : '';
+	$attributes[] = $atts['multiline'] ? 'data-multiline="'.$atts['multiline'].'"' : '';
+	$attributes[] = $atts['iterations'] ? 'data-iterations="'.$atts['iterations'].'"' : '';
+	$attributes[] = $atts['brackets'] ? 'data-brackets="'.$atts['brackets'].'"' : '';
+	$attributes[] = $atts['strokewidth'] ? 'data-stroke-width="'.$atts['strokewidth'].'"' : '';
 
-	<mark class="rough-notation"
-		data-type="${atts['type']}"
-		data-animate="${atts['animate']}"
-		data-animation-duration="${atts['animationDuration']}"
-		data-color="${atts['color']}"
-		data-stroke-width="${atts['strokeWidth']}"
-		data-padding="${atts['padding']}"
-		data-multiline="${atts['multiline']}"
-		data-iterations="${atts['iterations']}"
-		data-brackets="${atts['brackets']}"
-	>$content</mark>
-EOD;
+	return '<mark class="rough-notation" '.implode(' ', $attributes).'>'.$content.'</mark>';
 });
 
 ?>
