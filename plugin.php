@@ -12,7 +12,7 @@
 add_action('wp_head', function () {
 ?>
 		<script src="https://unpkg.com/rough-notation@0.5.1/lib/rough-notation.iife.js"></script>
-		<style>mark.rough-notation {background:none}</style>
+		<style>mark.rough-notation {background:none;display:inline-block}</style>
 		<script>
 addEventListener("DOMContentLoaded", (event) => {
 	document.querySelectorAll('.rough-notation').forEach(e=>RoughNotation.annotate(e, {
