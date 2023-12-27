@@ -28,7 +28,7 @@ addEventListener("DOMContentLoaded", (event) => {
 			"iterations": e.dataset.iterations || 1,
 			"brackets": e.dataset.brackets || 'top',
 		}).show()
-	}, (timeout += 50), i)
+	}, (timeout += 50), i))
 })
 		</script>
 <?php
