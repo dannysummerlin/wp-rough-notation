@@ -14,7 +14,9 @@ add_action('wp_head', function () {
 		<script src="https://unpkg.com/rough-notation@0.5.1/lib/rough-notation.iife.js"></script>
 		<style>mark.rough-notation {background:none;display:inline-block;position:relative;color:unset}</style>
 		<script>
-addEventListener("DOMContentLoaded", (event) => {
+document.addEventListener('readystatechange', ()=>{
+	if(document.readyState != 'complete')
+		return
 	document.querySelectorAll('.rough-notation').forEach(e=>RoughNotation.annotate(e, {
 		"type": e.dataset.type || null,
 		"animate": e.dataset.animate || true,
@@ -25,9 +27,8 @@ addEventListener("DOMContentLoaded", (event) => {
 		"multiline": e.dataset.multiline || true,
 		"iterations": e.dataset.iterations || 1,
 		"brackets": e.dataset.brackets || 'top',
-	}).show())
-	window.dispatchEvent(new Event('resize'));
-})
+	}).show()
+)})
 		</script>
 <?php
 });
