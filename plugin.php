@@ -15,17 +15,20 @@ add_action('wp_head', function () {
 		<style>mark.rough-notation {background:none;display:inline-block}</style>
 		<script>
 addEventListener("DOMContentLoaded", (event) => {
-	document.querySelectorAll('.rough-notation').forEach(e=>RoughNotation.annotate(e, {
-		"type": e.dataset.type || null,
-		"animate": e.dataset.animate || true,
-		"animationDuration": (e.dataset.animationDuration || 800) + "ms",
-		"color": e.dataset.color || 'var(--ast-global-color-0)',
-		"strokeWidth": e.dataset.strokeWidth || 1,
-		"padding": e.dataset.padding || 0,
-		"multiline": e.dataset.multiline || true,
-		"iterations": e.dataset.iterations || 1,
-		"brackets": e.dataset.brackets || 'top',
-	}).show())
+	let timeout = 50
+	document.querySelectorAll('.rough-notation').forEach(i=>setTimeout((e)=>{
+		RoughNotation.annotate(e, {
+			"type": e.dataset.type || null,
+			"animate": e.dataset.animate || true,
+			"animationDuration": (e.dataset.animationDuration || 800) + "ms",
+			"color": e.dataset.color || 'var(--ast-global-color-0)',
+			"strokeWidth": e.dataset.strokeWidth || 1,
+			"padding": e.dataset.padding || 0,
+			"multiline": e.dataset.multiline || true,
+			"iterations": e.dataset.iterations || 1,
+			"brackets": e.dataset.brackets || 'top',
+		}).show()
+	}, (timeout += 50), i)
 })
 		</script>
 <?php
