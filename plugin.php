@@ -15,7 +15,7 @@ add_action('wp_head', function () {
 		<style>mark.rough-notation {background:none;display:inline-block;position:relative;color:unset}</style>
 		<script>
 addEventListener("DOMContentLoaded", (event) => {
-	setTimeout(()=>document.querySelectorAll('.rough-notation').forEach(e=>RoughNotation.annotate(e, {
+	document.querySelectorAll('.rough-notation').forEach(e=>RoughNotation.annotate(e, {
 		"type": e.dataset.type || null,
 		"animate": e.dataset.animate || true,
 		"animationDuration": (e.dataset.animationDuration || 800) + "ms",
@@ -25,7 +25,8 @@ addEventListener("DOMContentLoaded", (event) => {
 		"multiline": e.dataset.multiline || true,
 		"iterations": e.dataset.iterations || 1,
 		"brackets": e.dataset.brackets || 'top',
-	}).show()), 100)
+	}).show())
+	window.dispatchEvent(new Event('resize'));
 })
 		</script>
 <?php
