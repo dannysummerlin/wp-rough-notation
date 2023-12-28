@@ -12,7 +12,7 @@
 add_action('wp_head', function () {
 ?>
 		<script src="https://unpkg.com/rough-notation@0.5.1/lib/rough-notation.iife.js"></script>
-		<style>mark.rough-notation {background:none;display:inline-block;position:relative;color:unset}</style>
+		<style> mark.rough-notation {background:none;display:inline-block;position:relative;color:unset} </style>
 		<script>
 document.addEventListener('readystatechange', ()=>{
 	if(document.readyState != 'complete')
@@ -33,21 +33,23 @@ document.addEventListener('readystatechange', ()=>{
 <?php
 });
 
-add_action('admin_head', function () {
-	global $typenow;
-	if(get_user_option('rich_editing') == 'true') {
-		add_filter('mce_external_plugins', function ($plugin_array) {
-			$plugin_array['rough_notation'] = plugins_url( '/tinymce-plugin.js', __FILE__ );
-			return $plugin_array;
-		});
-		add_filter('mce_buttons', function ($buttons) {
-			array_push($buttons, 'rough-notation');
-			return $buttons;
-		});
-	}
+add_action('init', function () {
+	wp_enqueue_script('rough-notation-editor', plugins_url('/tinymce-plugin.js', __FILE__));
+	add_filter('tiny_mce_plugins', function ($plugins) {
+		return array_merge($plugins, ['rough-notation']);
+	});
+	add_filter('teeny_mce_plugins', function ($plugins) {
+		return array_merge($plugins, ['rough-notation']);
+	});
+	add_filter('mce_buttons', function ($buttons) {
+		return array_merge($buttons, ['rough-notation']);
+	});
+	add_filter('teeny_mce_buttons', function ($buttons) {
+		return array_merge($buttons, ['rough-notation']);
+	});
 });
 
-add_shortcode("rough", function ( $atts, $content = null) {
+add_shortcode("rough", function ($atts, $content = null) {
 /*
 type -
 	underline: This style creates a sketchy underline below an element.
