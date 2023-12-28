@@ -33,6 +33,20 @@ document.addEventListener('readystatechange', ()=>{
 <?php
 });
 
+add_action('admin_head', function () {
+	global $typenow;
+	if(get_user_option('rich_editing') == 'true') {
+		add_filter('mce_external_plugins', function ($plugin_array) {
+			$plugin_array['rough_notation'] = plugins_url( '/tinymce-plugin.js', __FILE__ );
+			return $plugin_array;
+		});
+		add_filter('mce_buttons', function ($buttons) {
+			array_push($buttons, 'rough-notation');
+			return $buttons;
+		});
+	}
+});
+
 add_shortcode("rough", function ( $atts, $content = null) {
 /*
 type -
