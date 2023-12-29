@@ -21,7 +21,7 @@ document.addEventListener('readystatechange', ()=>{
 		"type": e.dataset.type || null,
 		"animate": e.dataset.animate || true,
 		"animationDuration": (e.dataset.animationDuration || 800) + "ms",
-		"color": (e.dataset.color && e.dataset.color != 'var(--)') ? e.dataset.color || 'yellow',
+		"color": (e.dataset.color && e.dataset.color != 'var(--)') ? e.dataset.color : 'yellow',
 		"strokeWidth": e.dataset.strokeWidth || 1,
 		"padding": e.dataset.padding || 0,
 		"multiline": e.dataset.multiline || true,
