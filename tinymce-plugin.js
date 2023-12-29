@@ -10,21 +10,21 @@ addEventListener("DOMContentLoaded", (e) => {
 				text: 'Circle',
 				onclick: function() {
 					selected = ed.selection.getContent()
-					content = '[rough type="circle" color="var(--)"]'+(selected || '')+'[/rough] ';
+					content = '[roughnotation type="circle" color="var(--)"]'+(selected || '')+'[/roughnotation] ';
 					ed.execCommand('mceInsertContent', false, content)
 				}
 			},{
 				text: 'Underline',
 				onclick: function() {
 					selected = ed.selection.getContent()
-					content = '[rough type="underline" color="var(--)"]'+(selected || '')+'[/rough] ';
+					content = '[roughnotation type="underline" color="var(--)"]'+(selected || '')+'[/roughnotation] ';
 					ed.execCommand('mceInsertContent', false, content)
 				}
 			},{
 				text: 'Highlight',
 				onclick: function() {
 					selected = ed.selection.getContent()
-					content = '[rough type="highlight" color="var(--)"]'+(selected || '')+'[/rough] ';
+					content = '[roughnotation type="highlight" color="var(--)"]'+(selected || '')+'[/roughnotation] ';
 					ed.execCommand('mceInsertContent', false, content)
 				}
 			}]
