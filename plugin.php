@@ -14,23 +14,23 @@ add_action('wp_head', function () {
 		<script src="https://unpkg.com/rough-notation@0.5.1/lib/rough-notation.iife.js"></script>
 		<style> mark.rough-notation {background:none;display:inline-block;position:relative;color:unset} </style>
 		<script>
-let activeRoughNotations = []
-window.addEventListener("drawRoughNotation", () => { activeRoughNotations.forEach(e=>e.show()) })
 document.addEventListener('readystatechange', ()=>{
 	if(document.readyState != 'complete')
 		return
-	document.querySelectorAll('.rough-notation').forEach(e=>activeRoughNotations.push(RoughNotation.annotate(e, {
-		"type": e.dataset.type || null,
-		"animate": e.dataset.animate || true,
-		"animationDuration": (e.dataset.animationDuration || 800) + "ms",
-		"color": (e.dataset.color && e.dataset.color != 'var(--)') ? e.dataset.color : 'yellow',
-		"strokeWidth": e.dataset.strokeWidth || 1,
-		"padding": e.dataset.padding || 0,
-		"multiline": e.dataset.multiline || true,
-		"iterations": e.dataset.iterations || 1,
-		"brackets": e.dataset.brackets || 'top',
-	})))
-	window.dispatchEvent(new Event("drawRoughNotation"))
+	document.querySelectorAll('.rough-notation').forEach(e=>{
+		RoughNotation.annotate(e, {
+			"type": e.dataset.type || null,
+			"animate": e.dataset.animate || true,
+			"animationDuration": (e.dataset.animationDuration || 800) + "ms",
+			"color": (e.dataset.color && e.dataset.color != 'var(--)') ? e.dataset.color : 'yellow',
+			"strokeWidth": e.dataset.strokeWidth || 1,
+			"padding": e.dataset.padding || 0,
+			"multiline": e.dataset.multiline || true,
+			"iterations": e.dataset.iterations || 1,
+			"brackets": e.dataset.brackets || 'top',
+		}).show()
+		e.style.width="calc(100% + 1px)"
+	})
 })
 		</script>
 <?php
