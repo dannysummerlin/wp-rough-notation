@@ -21,7 +21,7 @@ document.addEventListener('readystatechange', ()=>{
 		RoughNotation.annotate(e, {
 			"type": e.dataset.type || null,
 			"animate": e.dataset.animate || true,
-			"animationDuration": (e.dataset.animationDuration || 800) + "ms",
+			"animationDuration": (e.dataset.animationDuration || 1000) + "ms",
 			"color": (e.dataset.color && e.dataset.color != 'var(--)') ? e.dataset.color : 'yellow',
 			"strokeWidth": e.dataset.strokeWidth || 1,
 			"padding": e.dataset.padding || 0,
@@ -30,6 +30,7 @@ document.addEventListener('readystatechange', ()=>{
 			"brackets": e.dataset.brackets || 'top',
 		}).show()
 		e.style.width="calc(100% + 1px)"
+		e.style.display="inline"
 	})
 })
 		</script>
